@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/wby-framework.iml" filepath="$PROJECT_DIR$/wby-framework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/wby-framework_main.iml" filepath="$PROJECT_DIR$/.idea/modules/wby-framework_main.iml" group="wby-framework" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/wby-framework_test.iml" filepath="$PROJECT_DIR$/.idea/modules/wby-framework_test.iml" group="wby-framework" />
+    </modules>
+  </component>
+</project>

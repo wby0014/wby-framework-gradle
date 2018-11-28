@@ -1,0 +1,82 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'maven' // 引入maven插件
+apply plugin: 'org.springframework.boot'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+group = 'org.wby4j'
+version = '2.3.3'
+
+configurations {
+    provided
+}
+
+repositories {
+//    mavenLocal()
+    maven {
+        url 'D://Maven-repo'
+    }
+}
+
+
+buildscript {
+    ext {
+        springBootVersion = '1.5.13.RELEASE'
+    }
+    repositories {
+//        mavenCentral()
+        maven {
+            url "http://maven.hikvision.com.cn/nexus/content/groups/public"
+            credentials {
+                username = 'ibuilding-cm'
+                password = 'ibuilding123cm'
+            }
+        }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+
+// 指定上传的路径
+def localMavenRepo = 'file://' + new File('D://Maven-repo').absolutePath
+
+// 上传Task，Gradle会生成并上传pom.xml文件。
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: localMavenRepo)
+
+            //构造项目的Pom文件
+            pom.project {
+                name = project.name
+                packaging = 'jar'
+                description = 'description'
+            }
+        }
+
+    }
+}
+
+
+dependencies {
+    providedCompile "junit:junit:$junit_version"
+    compile "org.slf4j:slf4j-log4j12:$slf4j_version"
+    providedCompile "javax.servlet:javax.servlet-api:$servlet_version"
+    compile "org.codehaus.jackson:jackson-mapper-asl:$jackson_version"
+    compile "org.codehaus.jackson:jackson-jaxrs:$jackson_version"
+    compile "cglib:cglib:$cglib_version"
+    compile "commons-lang:commons-lang:$commons_lang_version"
+    compile "commons-collections:commons-collections:$commons_collections_version"
+    compile "commons-beanutils:commons-beanutils:$commons_beanutils_version"
+    compile "commons-dbcp:commons-dbcp:$commons_dbcp_version"
+    compile "commons-dbutils:commons-dbutils:$commons_dbutils_version"
+    compile "commons-fileupload:commons-fileupload:$commons_fileupload_version"
+    compile "commons-codec:commons-codec:$commons_codec_version"
+}

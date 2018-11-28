@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: commons-dbutils:commons-dbutils:1.5">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/commons-dbutils/commons-dbutils/1.5/commons-dbutils-1.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
